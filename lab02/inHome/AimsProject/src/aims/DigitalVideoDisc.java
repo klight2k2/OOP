@@ -95,7 +95,7 @@ public class DigitalVideoDisc {
 
 	@Override
 	public String toString() {
-		String result = "";
+		String result = id + ".DVD-";
 		if (title != null) {
 			result += title;
 		}
