@@ -92,4 +92,23 @@ public class DigitalVideoDisc {
 			return true;
 		}
 	}
+
+	@Override
+	public String toString() {
+		String result = "";
+		if (title != null) {
+			result += title;
+		}
+		if (category != null) {
+			result += "-" + category;
+		}
+		if (director != null) {
+			result += "-" + director;
+		}
+		if (length > 0) {
+			result += "-" + length;
+		}
+		return result + ":" + cost + "$";
+	}
+
 }
