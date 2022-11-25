@@ -78,7 +78,7 @@ public class Cart {
 		System.out.println("***********************CART***********************");
 		System.out.println("Ordered Items:");
 		for (int i = 0; i < qtyOrdered; i++) {
-			System.out.println(i + 1 + ".DVD-" + itemsOrdered[i].toString());
+			System.out.println(itemsOrdered[i].toString());
 
 		}
 		System.out.println("Total cost:" + totalCost() + "$");
@@ -88,8 +88,7 @@ public class Cart {
 		boolean hasResults = false;
 		for (int i = 0; i < qtyOrdered; i++) {
 			if (itemsOrdered[i].isMatch(id)) {
-				System.out
-						.println(i + 1 + ".DVD-" + itemsOrdered[i].getTitle() + ":" + itemsOrdered[i].getCost() + "$");
+				System.out.println(itemsOrdered[i]);
 				hasResults = true;
 			}
 		}
@@ -102,7 +101,7 @@ public class Cart {
 		boolean hasResults = false;
 		for (int i = 0; i < qtyOrdered; i++) {
 			if (itemsOrdered[i].isMatch(title)) {
-				System.out.println("DVD-" + itemsOrdered[i].toString());
+				System.out.println(itemsOrdered[i].toString());
 				hasResults = true;
 			}
 		}
