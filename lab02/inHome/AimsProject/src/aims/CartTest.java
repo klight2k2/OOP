@@ -13,6 +13,13 @@ public class CartTest {
         cart.addDigitalVideoDisc(dvd3);
         // test print method
         cart.print();
-
+        // to do: test the serch methods here
+        System.out.println("Search:");
+        // search by id
+        cart.search(3);
+        cart.search(4);
+        // search by title
+        cart.search("The Lion King");
+        cart.search("Hello");
     }
 }
