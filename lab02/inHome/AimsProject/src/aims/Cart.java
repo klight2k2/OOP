@@ -83,4 +83,31 @@ public class Cart {
 		}
 		System.out.println("Total cost:" + totalCost() + "$");
 	}
+
+	public void search(int id) {
+		boolean hasResults = false;
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].isMatch(id)) {
+				System.out
+						.println(i + 1 + ".DVD-" + itemsOrdered[i].getTitle() + ":" + itemsOrdered[i].getCost() + "$");
+				hasResults = true;
+			}
+		}
+		if (!hasResults) {
+			System.out.println("No match is found");
+		}
+	}
+
+	public void search(String title) {
+		boolean hasResults = false;
+		for (int i = 0; i < qtyOrdered; i++) {
+			if (itemsOrdered[i].isMatch(title)) {
+				System.out.println("DVD-" + itemsOrdered[i].toString());
+				hasResults = true;
+			}
+		}
+		if (!hasResults) {
+			System.out.println("No match is found");
+		}
+	}
 }
