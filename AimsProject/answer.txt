@@ -1,0 +1,10 @@
+Is JAVA a Pass by Value or a Pass by Reference programming language? 
+java is a pass by value
+
+After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+bởi vì jangleDVD và cinderellaDVD đều là pass by value, nên nó chỉ truyền địa chỉ mà nó tham chiếu tới
+đối tượng thực sự tới 2 biến local trong function swap chứ không phải truyền jungleDVD và cinderellaDVD
+
+After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+bởi vì jungleDVD truyền địa chỉ của đối tượng jungleDVD cho biến trong function changeTitle nên khi ta 
+thay đổi title của đối tượng jungleDVD, thì do biến jungleDVD trỏ tới đối tượng jungleDVD nên nó sẽ thay đổi title
