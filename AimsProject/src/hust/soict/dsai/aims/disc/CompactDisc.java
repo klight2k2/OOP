@@ -4,9 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.media.Playable;
 
-public class CompactDisc extends Media {
+public class CompactDisc extends Media implements Playable {
 	private String artist;
+
+	public String getArtist() {
+		return artist;
+	}
+
 	private List<Track> tracks = new ArrayList<Track>();
 
 	public CompactDisc() {
@@ -39,6 +45,14 @@ public class CompactDisc extends Media {
 			sum += tracks.get(i).getLength();
 		}
 		return sum;
+	}
+
+	public void play() {
+		System.out.println("Artist " + this.getArtist());
+		int size = tracks.size();
+		for (int i = 0; i < size; i++) {
+			tracks.get(i).play();
+		}
 	}
 
 }
