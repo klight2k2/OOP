@@ -2,22 +2,28 @@ package hust.soict.dsai.aims.store;
 
 import java.util.ArrayList;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Media;
 
 public class Store {
-    private ArrayList<DigitalVideoDisc> itemsInStore = new ArrayList<DigitalVideoDisc>();
+    private ArrayList<Media> itemsInStore = new ArrayList<Media>();
 
-    public void addDVD(DigitalVideoDisc dvd) {
-        itemsInStore.add(dvd);
-        System.out.println("The dvd has been added!");
+    public void addMedia(Object media) {
+        if (media instanceof Media) {
+            Media newMedia = (Media) media;
+            itemsInStore.add(newMedia);
+            System.out.println("Add media successfully");
+        } else {
+            System.out.println("Can't add media");
+        }
     }
 
-    public void removeDVD(DigitalVideoDisc dvd) {
-        if (dvd != null) {
-            itemsInStore.remove(dvd);
-            System.out.println("The dvd has been removed!");
+    public void removeMedia(Object media) {
+        if (media instanceof Media) {
+            Media newMedia = (Media) media;
+            itemsInStore.remove(newMedia);
+            System.out.println("Remove media successfully");
         } else {
-            System.out.println("Something error!");
+            System.out.println("Can't remove media");
         }
     }
 
@@ -25,7 +31,7 @@ public class Store {
         if (itemsInStore.isEmpty()) {
             System.out.println("Store is empty!");
         } else {
-            for (DigitalVideoDisc dvd : itemsInStore) {
+            for (Media dvd : itemsInStore) {
                 System.out.println(dvd.toString());
             }
         }
