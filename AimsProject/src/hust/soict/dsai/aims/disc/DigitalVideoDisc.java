@@ -17,7 +17,7 @@ public class DigitalVideoDisc extends Media implements Playable {
 	}
 
 	public String getDirector() {
-		return director;
+		return director ;
 	}
 
 	public int getLength() {
@@ -63,14 +63,22 @@ public class DigitalVideoDisc extends Media implements Playable {
 
 	@Override
 	public boolean equals(Object obj) {
+		System.out.println(obj instanceof DigitalVideoDisc);
+		if(obj instanceof DigitalVideoDisc) {
+			
 		DigitalVideoDisc disc = (DigitalVideoDisc) obj;
-		if (this.getTitle().equals(disc.getTitle()) && this.getCategory().equals(disc.getCategory())
+//		return false;
+		return this.getTitle().equals(disc.getTitle()) && this.getCategory().equals(disc.getCategory()) 
+				&& this.getDirector()!=null
 				&& this.getDirector().equals(disc.getDirector()) && this.getLength() == disc.getLength()
-				&& this.getCost() == disc.getCost()) {
-			return true;
-		} else {
-			return false;
+				&& this.getCost() == disc.getCost();
 		}
+		return false;
+//		if () {
+//			return true;
+//		} else {
+//			return false;
+//		}
 	}
 
 	@Override

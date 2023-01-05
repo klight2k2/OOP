@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hust.soict.dsai.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
-	private List<Media> itemsOrdered = new ArrayList<Media>(MAX_NUMBERS_ORDERED);
+	private ObservableList<Media> itemsOrdered =  FXCollections.observableArrayList();
 
+	public ObservableList<Media> getItemsOrdered() {
+		return itemsOrdered;
+	}
+	
 	public float totalCost() {
 		int size = itemsOrdered.size();
 		int sum = 0;
