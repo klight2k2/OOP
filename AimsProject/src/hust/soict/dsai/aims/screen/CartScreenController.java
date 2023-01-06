@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.screen;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +11,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -27,7 +30,7 @@ import hust.soict.dsai.aims.media.Playable;
 public class CartScreenController {
 	
 	private Cart cart;
-	private Stage stage;
+	private ControllerScreen controllerScreen;
 	
 	@FXML
     private TableView<Media> tblMedia;
@@ -48,6 +51,8 @@ public class CartScreenController {
     private Label totalCost;
     
     @FXML
+    private TextField tfFilter;
+    @FXML
     private Button btnPlay;
 
     @FXML
@@ -62,9 +67,14 @@ public class CartScreenController {
     @FXML
     private Button btnOrder;
     
-    public CartScreenController(Cart cart) {
+    @FXML
+    private RadioButton radioBtnFilterId;
+    
+    public CartScreenController(Cart cart , ControllerScreen controllerScreen) {
 		super();
 		this.cart = cart;
+		System.out.println("test now");
+		this.controllerScreen = controllerScreen;
 	}
     
 
@@ -75,6 +85,12 @@ public class CartScreenController {
     	}else {
     		btnPlay.setVisible(false);
     	}
+    }
+    void showFilterMedia(String searchString) {
+    	if(radioBtnFilterId.isSelected()) {
+    		tblMedia.setItems(new FilteredList<Media>(this.cart.getItemsOrdered(),item-> item.getId()==Integer.parseInt(searchString)));
+    	}else
+    	tblMedia.setItems(new FilteredList<Media>(this.cart.getItemsOrdered(),item-> item.getTitle().contains(searchString)));
     }
     
     @FXML
@@ -92,6 +108,16 @@ public class CartScreenController {
     	btnRemove.setVisible(false);
     	playingMedia.setVisible(false);
     	btnStop.setVisible(false);
+    	System.out.println(cart.getItemsOrdered().toString());
+    	tfFilter.textProperty().addListener(new ChangeListener<String>() {
+			
+			@Override
+			public void changed(ObservableValue<? extends String> observable, String oldValue,
+					String newValue) {
+				
+				showFilterMedia(newValue);
+			}
+		});
     	tblMedia.getSelectionModel().selectedItemProperty().addListener(
     			new ChangeListener<Media>() {
     				
@@ -109,8 +135,8 @@ public class CartScreenController {
     @FXML
     void btnRemovePressed(ActionEvent event) {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
-    	
-//    	cart.removeMedia(media);
+    	cart.removeMedia(media);
+    	totalCost.setText(cart.totalCost()+"$");	
     	System.out.println(media instanceof Book);
     }
     
@@ -130,20 +156,21 @@ public class CartScreenController {
     
     @FXML
     void btnOrderPressed(ActionEvent event) throws IOException {
-    	FXMLLoader loader = new FXMLLoader(getClass()
-				.getResource("/hust/soict/dsai/aims/screen/scene.fxml"));
-		Stage window= (Stage)((Node)event.getSource()).getScene().getWindow();
-		Test controller = new Test();
-		loader.setController(controller);
-		Parent root = loader.load();
-		Scene scene = new Scene(root,1024,768);
-		window.setTitle("Painter");
-		window.setScene(scene);
-		window.show();	
-//    	btnOrder.setText("Success!!!");
-//    	btnOrder.setDisable(true);
-//    	
-//    	cart.getItemsOrdered().removeAll(cart.getItemsOrdered());
-//    	totalCost.setText("0.0$");	
+    	btnOrder.setText("Success!!!");
+    	btnOrder.setDisable(true);
+    	
+    	cart.getItemsOrdered().removeAll(cart.getItemsOrdered());
+    	totalCost.setText("0.0$");	
+    }
+    
+    @FXML
+    void changeToStoreScreen(ActionEvent event) {
+    	System.out.println("test now"+controllerScreen);
+    	this.controllerScreen.showStoreScreen();
+    }
+    @FXML
+    void updateFilter(InputMethodEvent event) {
+    	System.out.println("sadddd");
+    	System.out.println(event.toString());
     }
 }

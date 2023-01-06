@@ -20,16 +20,22 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SpringLayout;
+import javax.swing.plaf.DimensionUIResource;
 
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.cart.Cart;
 
-public class StoreScreen extends JFrame {
+public class demo extends JFrame {
 	private Store store;
 	private Cart cart;
-	private ControllerScreen c;
+	private JTextField title;
+	private JTextField category;
+	private JTextField cost;
+//	private ControllerScreen c;
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Option");
 		
@@ -64,7 +70,7 @@ public class StoreScreen extends JFrame {
 		btnCart.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					c.showCartScreen();
+//					c.showCartScreen();
 				}
 		});
 		
@@ -87,23 +93,56 @@ public class StoreScreen extends JFrame {
 	}
 	
 	JPanel createCenter() {
-		
-		JPanel center = new JPanel();
-		center.setLayout(new GridLayout(3, 3, 2, 2));
-		
-		ArrayList<Media> mediaInStore = store.getItemsInStore();
-		for (int i=0; i< mediaInStore.size(); i++) {
-			MediaStore cell = new MediaStore(mediaInStore.get(i), cart);
-			center.add(cell);
+		String[] labels = {"Name: ", "Fax: ", "Email: ", "Address: "};
+		int numPairs = labels.length;
+		SpringLayout layout =new SpringLayout();
+		ArrayList<JTextField> listText=new ArrayList<>();
+//		layout.putConstraint(SpringLayout.WEST, textField,
+//				5,
+//				SpringLayout.EAST, label);
+//		layout.putConstraint(SpringLayout.NORTH, textField,
+//				5,
+//				SpringLayout.NORTH, contentPane);
+		JPanel p = new JPanel(layout);
+		title= new  JTextField();
+//		center.add(new JTextField("Text field", 15));
+//		center.add(new JTextField("gfg field", 100));
+//		center.add(new JLabel("title"));
+		for (int i = 0; i < numPairs; i++) {
+		    JLabel l = new JLabel(labels[i], JLabel.TRAILING);
+		    p.add(l);
+		    JTextField textField = new JTextField(10);
+		    listText.add(textField);
+		    l.setLabelFor(textField);
+		    p.add(textField);
 		}
-		
-		return center;
+		System.out.print(listText.size());
+		JButton tes=new JButton("add");
+		tes.setVisible(false);
+		p.add(tes);
+		p.setPreferredSize(new Dimension(300, 300));
+		p.add(new JButton("add"));
+		SpringUtilities.makeCompactGrid(p,
+                5, 2, //rows, cols
+                6, 6,        //initX, initY
+                6, 6);       //xPad, yPad
+
+//		//Lay out the panel.
+//		SpringUtilities.makeCompactGrid(p,
+//		                                numPairs, 2, //rows, cols
+//		                                6, 6,        //initX, initY
+//		                                6, 6);       //xPad, yPad
+		p.setMaximumSize( new Dimension(
+				100,
+				300
+				) );
+		return p;
 	}
 	
-	public StoreScreen(Store store, Cart cart,ControllerScreen c) {
+	public demo(Store store, Cart cart) {
 		this.store = store;
 		this.cart = cart;
-		this.c=c;
+//		this.c=c;
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",
 				"Animation", "Roger Aller", 87, 19.95f);
 		System.out.println(dvd1.getId());
@@ -196,7 +235,8 @@ public class StoreScreen extends JFrame {
 //		System.out.println(dvd9.getId());
 //		store.addMedia(dvd9);
 		
-//		new StoreScreen(store, cart);
+		demo test=new demo(store, cart);
+		test.pack();
 	}
 
 }
