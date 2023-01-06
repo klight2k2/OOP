@@ -1,5 +1,6 @@
 package hust.soict.dsai.aims.disc;
 
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Playable;
 
 public class Track implements Playable {
@@ -20,9 +21,14 @@ public class Track implements Playable {
 		return length;
 	}
 
-	public void play() {
+	public void play() throws PlayerException {
+		if(this.getLength()>0) {	
 		System.out.println("Play track: " + this.getTitle());
 		System.out.println("Track length: " + this.getLength());
+		}else {
+			throw new PlayerException("Error:Track length is non-positive");
+		}
+		
 	}
 
 	@Override

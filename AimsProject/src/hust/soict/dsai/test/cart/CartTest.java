@@ -1,5 +1,7 @@
 package hust.soict.dsai.test.cart;
 
+import javax.naming.LimitExceededException;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
@@ -7,15 +9,12 @@ public class CartTest {
     public static void main(String[] args) {
         Cart cart = new Cart();
         DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
-        cart.addMedia(dvd1);
-
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
-        cart.addMedia(dvd2);
-
-        DigitalVideoDisc dvd3 = new DigitalVideoDisc("Animation", "Aladin", 18.99f);
-        cart.addMedia(dvd3);
-
-        cart.removeMedia(dvd2);
+        try {
+			cart.addMedia(dvd1);
+		} catch (LimitExceededException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         // test print method
         cart.print();
         // to do: test the search methods here
@@ -27,4 +26,5 @@ public class CartTest {
         cart.search("The Lion King");
         cart.search("Hello");
     }
+        
 }
