@@ -32,15 +32,35 @@ public class StoreScreen extends JFrame {
 	private ControllerScreen c;
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Option");
-		
 		JMenu smUpdateStore = new JMenu("Update Store");
-		smUpdateStore.add(new JMenuItem("Add Book"));
-		smUpdateStore.add(new JMenuItem("Add CD"));
-		smUpdateStore.add(new JMenuItem("Add DVD"));
-		
+		JMenuItem addBookMenu= new JMenuItem("Add Book");
+		addBookMenu.addActionListener(e->{
+			c.showAddBookScreen();
+		});
+		smUpdateStore.add(addBookMenu);
+		JMenuItem addCDMenu=new JMenuItem("Add CD");
+		addCDMenu.addActionListener(e->{
+			c.showAddCDCreen();
+		});
+		smUpdateStore.add(addCDMenu);
+		JMenuItem addDVDMenu= new JMenuItem("Add DVD");
+		addDVDMenu.addActionListener(e->{
+			c.showAddDVDScreen();
+		});
+		smUpdateStore.add(addDVDMenu);
+
 		menu.add(smUpdateStore);
-		menu.add(new JMenuItem("View store"));
-		menu.add(new JMenuItem("View cart"));
+		JMenuItem viewStoreMenu= new JMenuItem("View store");
+		viewStoreMenu.addActionListener(e->{
+			c.showStoreScreen();
+		});
+		menu.add(viewStoreMenu);
+		
+		JMenuItem viewCartMenu= new JMenuItem("View cart");
+		viewCartMenu.addActionListener(e->{
+			c.showCartScreen();
+		});
+		menu.add(viewCartMenu);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -104,35 +124,6 @@ public class StoreScreen extends JFrame {
 		this.store = store;
 		this.cart = cart;
 		this.c=c;
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",
-				"Animation", "Roger Aller", 87, 19.95f);
-		System.out.println(dvd1.getId());
-		store.addMedia(dvd1);
-		
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars",
-		"Science Fiction", "George Lucas", 87, 24.95f);
-		System.out.println(dvd2.getId());
-		store.addMedia(dvd2);
-		
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",
-		"Animation", 18.99f);
-		System.out.println(dvd3.getId());
-		store.addMedia(dvd3);
-		
-		DigitalVideoDisc dvd4 = new DigitalVideoDisc("The Lion King",
-		"Animation", "Roger Aller", 87, 19.95f);
-		System.out.println(dvd4.getId());
-		store.addMedia(dvd4);
-		
-		DigitalVideoDisc dvd5 = new DigitalVideoDisc("Star Wars",
-		"Science Fiction", "George Lucas", 87, 24.95f);
-		System.out.println(dvd5.getId());
-		store.addMedia(dvd5);
-		
-		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Aladin",
-		"Animation", 18.99f);
-		System.out.println(dvd6.getId());
-		store.addMedia(dvd6);
 		Container cp = getContentPane();
 		cp.setLayout(new BorderLayout());
 		
@@ -146,57 +137,6 @@ public class StoreScreen extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		Store store = new Store();
-		Cart cart = new Cart();
-	
-		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King",
-				"Animation", "Roger Aller", 87, 19.95f);
-		System.out.println(dvd1.getId());
-		store.addMedia(dvd1);
-		
-		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars",
-		"Science Fiction", "George Lucas", 87, 24.95f);
-		System.out.println(dvd2.getId());
-		store.addMedia(dvd2);
-		
-		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin",
-		"Animation", 18.99f);
-		System.out.println(dvd3.getId());
-		store.addMedia(dvd3);
-		
-		DigitalVideoDisc dvd4 = new DigitalVideoDisc("The Lion King",
-		"Animation", "Roger Aller", 87, 19.95f);
-		System.out.println(dvd4.getId());
-		store.addMedia(dvd4);
-		
-		DigitalVideoDisc dvd5 = new DigitalVideoDisc("Star Wars",
-		"Science Fiction", "George Lucas", 87, 24.95f);
-		System.out.println(dvd5.getId());
-		store.addMedia(dvd5);
-		
-		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Aladin",
-		"Animation", 18.99f);
-		System.out.println(dvd6.getId());
-		store.addMedia(dvd6);
-		
-		DigitalVideoDisc dvd7 = new DigitalVideoDisc("The Lion King",
-		"Animation", "Roger Aller", 87, 19.95f);
-		System.out.println(dvd7.getId());
-		store.addMedia(dvd7);
-		
-		DigitalVideoDisc dvd8 = new DigitalVideoDisc("Star Wars",
-		"Science Fiction", "George Lucas", 87, 24.95f);
-		System.out.println(dvd8.getId());
-		store.addMedia(dvd8);
-		store.addMedia(dvd8);
-		store.addMedia(dvd8);
-		
-//		DigitalVideoDisc dvd9 = new DigitalVideoDisc("Aladin",
-//		"Animation", 18.99f);
-//		System.out.println(dvd9.getId());
-//		store.addMedia(dvd9);
-		
-//		new StoreScreen(store, cart);
 	}
 
 }

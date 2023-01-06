@@ -27,13 +27,13 @@
                   <items>
                         <Menu mnemonicParsing="false" text="Update Store">
                           <items>
-                            <MenuItem mnemonicParsing="false" text="Add Book" />
-                              <MenuItem mnemonicParsing="false" text="Add CD" />
-                              <MenuItem mnemonicParsing="false" text="Add DVD" />
+                            <MenuItem mnemonicParsing="false" onAction="#changeToAddBookScreen" text="Add Book" />
+                              <MenuItem mnemonicParsing="false" onAction="#changeToAddCDScreen" text="Add CD" />
+                              <MenuItem mnemonicParsing="false" onAction="#changeToAddDVDScreen" text="Add DVD" />
                           </items>
                         </Menu>
-                    <MenuItem mnemonicParsing="false" text="View Store" />
-                        <MenuItem mnemonicParsing="false" onAction="#changeToStoreScreen" text="View Cart" />
+                    <MenuItem mnemonicParsing="false" onAction="#changeToStoreScreen" text="View Store" />
+                        <MenuItem mnemonicParsing="false" onAction="#changeToCartScreen" text="View Cart" />
                   </items>
                 </Menu>
               </menus>
@@ -119,6 +119,15 @@
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="9.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
             </Button>
          </children>
       </VBox>

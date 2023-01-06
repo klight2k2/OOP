@@ -165,9 +165,28 @@ public class CartScreenController {
     
     @FXML
     void changeToStoreScreen(ActionEvent event) {
-    	System.out.println("test now"+controllerScreen);
     	this.controllerScreen.showStoreScreen();
     }
+    @FXML
+    void changeToAddBookScreen(ActionEvent event) {
+    	this.controllerScreen.showAddBookScreen();
+    }
+
+    @FXML
+    void changeToAddCDScreen(ActionEvent event) {
+    	this.controllerScreen.showAddCDCreen();
+    }
+
+    @FXML
+    void changeToAddDVDScreen(ActionEvent event) {
+    	this.controllerScreen.showAddDVDScreen();
+    }
+
+    @FXML
+    void changeToCartScreen(ActionEvent event) {
+    	this.controllerScreen.showCartScreen();
+    }
+
     @FXML
     void updateFilter(InputMethodEvent event) {
     	System.out.println("sadddd");
