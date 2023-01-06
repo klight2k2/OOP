@@ -16,10 +16,9 @@ import hust.soict.dsai.aims.store.Store;
 public class AddDigitalVideoDiscToStoreScreen extends AddItemToStoreScreen {
 	private JTextField director;
 	private JTextField length;
-
+	
 	public AddDigitalVideoDiscToStoreScreen(Store store, Cart cart, ControllerScreen c) {
 		super(store, cart, c);
-
 	}
 	@Override
 	void updateAdd(JPanel panel) {

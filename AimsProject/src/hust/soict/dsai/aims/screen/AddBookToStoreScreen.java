@@ -16,7 +16,6 @@ import hust.soict.dsai.aims.store.Store;
 
 public class AddBookToStoreScreen extends AddItemToStoreScreen {
 	private JTextField listAuthor;
-
 	public AddBookToStoreScreen(Store store, Cart cart, ControllerScreen c) {
 		super(store, cart, c);
 
@@ -57,11 +56,9 @@ public class AddBookToStoreScreen extends AddItemToStoreScreen {
 		Book book = new Book(title, category, cost);
 		for(String author:arrayAuthor) {
 		book.addAuthor(author);
-		System.out.println("a success"+ author);
 		}
 		this.store.addMedia(book);
 		JOptionPane.showMessageDialog(null, "add Book successfully!");
-		System.out.println("add success"+ listAuthor);
 		clearTextField();
 		
 	}

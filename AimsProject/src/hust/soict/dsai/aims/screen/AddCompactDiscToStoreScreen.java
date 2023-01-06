@@ -18,7 +18,6 @@ import hust.soict.dsai.aims.store.Store;
 public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 	private JTextField artist;
 	private JTextField listTrack;
-
 	public AddCompactDiscToStoreScreen(Store store, Cart cart, ControllerScreen c) {
 		super(store, cart, c);
 
@@ -35,7 +34,7 @@ public class AddCompactDiscToStoreScreen extends AddItemToStoreScreen {
 		artistLabel.setLabelFor(artist);
 		panel.add(artist);
 		JLabel listTrackLabel = new JLabel("list track(each track separated by a comma Ex: track-length)", JLabel.TRAILING);
-		listTrackLabel.setPreferredSize(new Dimension(100, 200));;
+//		listTrackLabel.setPreferredSize(new Dimension(100, 200));;
 		panel.add(listTrackLabel);
 		listTrack = new JTextField(2);
 		listTrackLabel.setLabelFor(listTrack);

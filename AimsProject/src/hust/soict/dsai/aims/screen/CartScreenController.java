@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.Media;
@@ -73,7 +75,6 @@ public class CartScreenController {
     public CartScreenController(Cart cart , ControllerScreen controllerScreen) {
 		super();
 		this.cart = cart;
-		System.out.println("test now");
 		this.controllerScreen = controllerScreen;
 	}
     
@@ -108,7 +109,6 @@ public class CartScreenController {
     	btnRemove.setVisible(false);
     	playingMedia.setVisible(false);
     	btnStop.setVisible(false);
-    	System.out.println(cart.getItemsOrdered().toString());
     	tfFilter.textProperty().addListener(new ChangeListener<String>() {
 			
 			@Override
@@ -137,7 +137,6 @@ public class CartScreenController {
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
     	cart.removeMedia(media);
     	totalCost.setText(cart.totalCost()+"$");	
-    	System.out.println(media instanceof Book);
     }
     
     @FXML
@@ -156,9 +155,7 @@ public class CartScreenController {
     
     @FXML
     void btnOrderPressed(ActionEvent event) throws IOException {
-    	btnOrder.setText("Success!!!");
-    	btnOrder.setDisable(true);
-    	
+    	JOptionPane.showMessageDialog(null, "Order successfully!");
     	cart.getItemsOrdered().removeAll(cart.getItemsOrdered());
     	totalCost.setText("0.0$");	
     }
@@ -189,7 +186,6 @@ public class CartScreenController {
 
     @FXML
     void updateFilter(InputMethodEvent event) {
-    	System.out.println("sadddd");
     	System.out.println(event.toString());
     }
 }

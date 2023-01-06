@@ -94,7 +94,6 @@ public class AddItemToStoreScreen extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					c.showCartScreen();
-					System.out.println("test nơư");
 				}
 		});
 		
@@ -139,7 +138,6 @@ public class AddItemToStoreScreen extends JFrame {
 
             public void actionPerformed(ActionEvent e){
             	
-            	System.out.print("hello");
             	JButton tes=new JButton("add");
             	center.add(tes,BorderLayout.CENTER);
             	c.updateAddItem();
@@ -209,7 +207,6 @@ public class AddItemToStoreScreen extends JFrame {
 		cp.add(createCenter(), BorderLayout.CENTER);
 		
 		setVisible(true);
-		setTitle("Store");
 		setSize(1024, 768);
 		
 	}

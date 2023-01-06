@@ -20,8 +20,11 @@ public class ControllerScreen {
 		cart= new Cart();
 		store=new Store();
 		addDVDScreen= new AddDigitalVideoDiscToStoreScreen(store, cart, this);
+		addDVDScreen.setTitle("Add DVD");
 		addBookScreen= new AddBookToStoreScreen(store, cart, this);
+		addBookScreen.setTitle("Add Book");
 		addCDScreen= new AddCompactDiscToStoreScreen(store, cart, this);
+		addCDScreen.setTitle("Add CD");
 		storeSreen= new StoreScreen(store,cart,this);
 		cartSceen= new CartScreen(cart,this);
 		showStoreScreen();
@@ -34,7 +37,6 @@ public class ControllerScreen {
 	public void updateAddItem() {
 	}
 	public void showStoreScreen() {
-		System.out.println("helloooo:"+store.getItemsInStore().toString());
 		SwingUtilities.updateComponentTreeUI(storeSreen);
 		storeSreen.dispose();
 		storeSreen= new StoreScreen(store,cart,this);
